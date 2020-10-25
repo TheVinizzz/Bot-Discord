@@ -5,7 +5,7 @@ const express = require("express")
 
 const config = { prefix: process.env.PREFIX_TOKEN, token: process.env.BOT_TOKEN}
 
-const App = express();
+const app = express();
 
 app.get("/", (req, res) => {
   const ping = new Date();
