@@ -1,8 +1,18 @@
 require('dotenv').config()
 const Discord = require("discord.js");
 const client = new Discord.Client();
+const express = require("express")
 
 const config = { prefix: process.env.PREFIX_TOKEN, token: process.env.BOT_TOKEN}
+
+const App = express();
+
+app.get("/", (req, res) => {
+  const ping = new Date();
+  ping.setHours(ping.getHours() - 3);
+  console.log(`Ping recebido às ${ping.getUTCHours()}:${ping.getUTCMinutes()}:${ping.getUTCSeconds()}`);
+  res.sendStatus(200);
+});
 
 client.on("ready", () => {
   console.log(`Bot foi iniciado, com ${client.users.size} usuários, em ${client.channels.size} canais, em ${client.guilds.size} servidores.`); 
